@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", "DM Serif Display", serif;
+  --font-sans: "Inter", "Manrope", system-ui, sans-serif;
+
+  --color-sage: #8ca36b;
+  --color-sage-dark: #6f8554;
+  --color-deep-green: #344b32;
+  --color-ivory: #f7f4ea;
+  --color-gold: #d8b477;
+  --color-gold-dark: #c49c5c;
+  --color-charcoal: #263327;
+
+  --shadow-soft: 0 20px 45px -20px rgba(38, 51, 39, 0.25);
+  --shadow-card: 0 10px 30px -12px rgba(38, 51, 39, 0.18);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ivory text-charcoal antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background-color: var(--color-sage);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .container-pad {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
