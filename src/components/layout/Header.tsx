@@ -95,7 +95,7 @@ export function Header() {
       {/* Barra principal */}
       <div
         className={`transition-all duration-300 ${
-          isScrolled ? "bg-ivory/95 shadow-card backdrop-blur-md" : "bg-ivory/80 backdrop-blur-sm sm:bg-transparent"
+          isScrolled ? "bg-ivory/95 shadow-card backdrop-blur-md" : "bg-gradient-to-b from-charcoal/40 to-transparent"
         }`}
       >
         <div
@@ -114,10 +114,18 @@ export function Header() {
               }`}
             />
             <span className="flex flex-col leading-tight">
-              <span className="font-display text-lg font-bold text-deep-green sm:text-xl">
+              <span
+                className={`font-display text-lg font-bold transition-colors duration-300 sm:text-xl ${
+                  isScrolled ? "text-deep-green" : "text-ivory"
+                }`}
+              >
                 {siteMeta.name}
               </span>
-              <span className="text-[11px] uppercase tracking-[0.14em] text-sage-dark sm:text-xs">
+              <span
+                className={`text-[11px] uppercase tracking-[0.14em] transition-colors duration-300 sm:text-xs ${
+                  isScrolled ? "text-sage-dark" : "text-ivory/80"
+                }`}
+              >
                 {siteMeta.tagline}
               </span>
             </span>
@@ -129,7 +137,11 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 data-active={activeHash === link.href}
-                className="link-underline text-sm font-medium text-charcoal/80 transition-colors hover:text-deep-green data-[active=true]:text-deep-green"
+                className={`link-underline text-sm font-medium transition-colors duration-300 ${
+                  isScrolled
+                    ? "text-charcoal/80 hover:text-deep-green data-[active=true]:text-deep-green"
+                    : "text-ivory/90 hover:text-ivory data-[active=true]:text-ivory"
+                }`}
               >
                 {link.label}
               </a>
@@ -148,7 +160,9 @@ export function Header() {
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-deep-green/5 text-deep-green lg:hidden"
+            className={`flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-300 lg:hidden ${
+              isScrolled ? "bg-deep-green/5 text-deep-green" : "bg-ivory/10 text-ivory"
+            }`}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
