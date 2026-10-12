@@ -42,15 +42,11 @@ function buildWhatsAppLink(message: string) {
 }
 
 export const whatsappLinks = {
-  default: buildWhatsAppLink(
-    "Olá, Suelen! Conheci a Soul Pet pelo site e gostaria de informações sobre uma consulta veterinária."
-  ),
+  schedule: buildWhatsAppLink("Olá! Gostaria de agendar uma consulta para meu pet."),
   service: (serviceName: string) =>
-    buildWhatsAppLink(
-      `Olá, Suelen! Gostaria de saber mais sobre o serviço de ${serviceName} da Soul Pet.`
-    ),
-  about: buildWhatsAppLink(
-    "Olá, Suelen! Vi a sua apresentação no site da Soul Pet e gostaria de conversar sobre um atendimento."
+    buildWhatsAppLink(`Olá! Gostaria de informações sobre ${serviceName}.`),
+  contact: buildWhatsAppLink(
+    "Olá! Conheci a Soul Pet pelo site e gostaria de mais informações."
   ),
 };
 
@@ -60,22 +56,29 @@ export const siteMeta = {
   professional: "Suelen Leite",
 };
 
+export const topBar = {
+  phoneDisplay: "(61) 99524-0505",
+  hours: "Seg. a partir das 08:30",
+  instagramHandle: INSTAGRAM_HANDLE,
+};
+
 export const navLinks = [
   { label: "Início", href: "#inicio" },
   { label: "Sobre", href: "#sobre" },
   { label: "Serviços", href: "#servicos" },
-  { label: "Diferenciais", href: "#diferenciais" },
+  { label: "Especialidades", href: "#especialidades" },
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Contato", href: "#contato" },
 ];
 
 export const hero = {
+  eyebrow: "Amor, ciência e cuidado",
   badge: "Medicina Veterinária Integrativa",
-  title: "Mais saúde, equilíbrio e amor para quem faz parte da sua família.",
+  title: "Amor, ciência e cuidado em cada atendimento",
   subtitle:
-    "Na Soul Pet, cada animal é único. Unimos conhecimento veterinário, atenção individualizada e uma abordagem integrativa para cuidar de quem você ama.",
+    "Um olhar especial para a saúde, o conforto e o bem-estar de quem faz parte da sua família.",
   ctaPrimary: "Agendar Consulta",
-  ctaSecondary: "Conheça nossos serviços",
+  ctaSecondary: "Conhecer Nossos Serviços",
   image: withBase("images/hero.webp"),
   imageAlt: "Suelen Leite, médica-veterinária da Soul Pet, durante atendimento",
   highlights: [
@@ -86,8 +89,13 @@ export const hero = {
 };
 
 export const introduction = {
-  title: "Cuidar deles faz parte do nosso propósito.",
+  eyebrow: "Conheça a Soul Pet",
+  title: "Cuidado veterinário com carinho e dedicação",
   text: "Na Soul Pet, acreditamos que cuidar da saúde animal vai além de tratar sintomas. Nosso olhar considera as necessidades individuais de cada paciente, promovendo cuidado, prevenção e qualidade de vida.",
+  image: withBase("images/hero.webp"),
+  imageAlt: "Atendimento veterinário realizado pela Soul Pet",
+  button: "Saiba Mais",
+  buttonHref: "#profissional",
   cards: [
     {
       title: "Cuidado individualizado",
@@ -159,7 +167,45 @@ export const services = {
   ] satisfies Service[],
 };
 
+export const banner = {
+  title: "Porque eles merecem todo o nosso cuidado",
+  text: "Saúde, carinho e atenção em cada etapa da vida do seu pet.",
+  button: "Agendar Atendimento",
+  image: withBase("images/galeria-2.webp"),
+  imageAlt: "Momento de carinho e cuidado com um pet",
+};
+
+export const integrativeCare = {
+  eyebrow: "Medicina Integrativa",
+  title: "Abordagens complementares para o cuidado do seu pet.",
+  text: "A medicina integrativa une o conhecimento veterinário tradicional a recursos complementares, sempre avaliados individualmente pela médica-veterinária responsável.",
+  image: withBase("images/galeria-3.webp"),
+  imageAlt: "Atendimento integrativo realizado pela Soul Pet",
+  button: "Conhecer os Tratamentos",
+  highlights: [
+    {
+      title: "Acupuntura veterinária",
+      description:
+        "Abordagem integrativa que pode complementar o tratamento clínico conforme avaliação veterinária.",
+      icon: "Sparkles",
+    },
+    {
+      title: "Laserterapia",
+      description:
+        "Recurso terapêutico complementar utilizado em situações selecionadas mediante indicação profissional.",
+      icon: "Zap",
+    },
+    {
+      title: "Nutrição personalizada",
+      description:
+        "Orientação nutricional individualizada, considerando as necessidades de cada animal.",
+      icon: "Salad",
+    },
+  ],
+};
+
 export const about = {
+  eyebrow: "Conheça a Profissional",
   title: "Conheça quem cuida com amor e dedicação.",
   name: "Suelen Leite",
   description:
@@ -205,28 +251,35 @@ export const differentials = {
   ],
 };
 
+export const galleryCategories = ["Todos", "Consultas", "Bem-estar", "Tratamentos", "Nossa Rotina"] as const;
+
 export const gallery = {
   title: "Momentos de cuidado e conexão.",
+  subtitle: "Fotografias reais de atendimentos, cuidados e momentos da rotina da Soul Pet.",
   images: [
     {
       src: withBase("images/hero.webp"),
       alt: "Suelen Leite durante atendimento veterinário",
       size: "large",
+      category: "Consultas",
     },
     {
       src: withBase("images/galeria-1.webp"),
       alt: "Suelen Leite cuidando de um cão",
       size: "small",
+      category: "Bem-estar",
     },
     {
       src: withBase("images/galeria-3.webp"),
       alt: "Suelen Leite em momento de acolhimento com um pet",
       size: "small",
+      category: "Tratamentos",
     },
     {
       src: withBase("images/galeria-2.webp"),
       alt: "Conexão com a natureza, essência da Soul Pet",
       size: "medium",
+      category: "Nossa Rotina",
     },
   ],
 };
@@ -265,6 +318,8 @@ export const ctaSection = {
   title: "Seu pet merece um cuidado tão especial quanto o amor que você sente por ele.",
   text: "Entre em contato com a Soul Pet e saiba mais sobre nossos atendimentos.",
   button: "Agendar pelo WhatsApp",
+  image: withBase("images/galeria-3.webp"),
+  imageAlt: "Pet acolhido com cuidado pela Soul Pet",
 };
 
 export const faq = {
@@ -288,6 +343,11 @@ export const faq = {
       question: "Como agendar um atendimento?",
       answer:
         "Você pode agendar diretamente pelo WhatsApp, clicando em um dos botões de agendamento espalhados pelo site.",
+    },
+    {
+      question: "Como obter informações sobre valores?",
+      answer:
+        "Os valores podem variar conforme a avaliação e as necessidades específicas de cada pet. Fale pelo WhatsApp para verificar as condições do atendimento.",
     },
     {
       question: "Como saber qual serviço é indicado para meu pet?",

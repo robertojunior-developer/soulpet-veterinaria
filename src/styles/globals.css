@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Playfair Display", "DM Serif Display", serif;
-  --font-sans: "Inter", "Manrope", system-ui, sans-serif;
+  --font-display: "Manrope", "Poppins", sans-serif;
+  --font-heading: "Manrope", "Poppins", sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-accent: "Playfair Display", serif;
 
   --color-sage: #8ca36b;
   --color-sage-dark: #6f8554;
@@ -16,6 +18,18 @@
   --shadow-card: 0 10px 30px -12px rgba(38, 51, 39, 0.18);
 }
 
+/* Design tokens — identidade visual Soul Pet (extraída da logomarca/estilos existentes) */
+:root {
+  --color-primary: #344b32; /* verde profundo */
+  --color-primary-hover: #40603c;
+  --color-secondary: #8ca36b; /* verde sálvia */
+  --color-accent: #d8b477; /* dourado suave */
+  --color-background: #f7f4ea; /* marfim */
+  --color-surface: #ffffff;
+  --color-text: #263327; /* carvão esverdeado */
+  --color-text-muted: rgba(38, 51, 39, 0.68);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -27,7 +41,7 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
   }
 
   ::selection {
@@ -48,6 +62,51 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .font-accent {
+    font-family: var(--font-accent);
+  }
+
+  /* Underline animado para links de navegação */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width 280ms ease;
+  }
+  .link-underline:hover::after,
+  .link-underline[data-active="true"]::after {
+    width: 100%;
+  }
+
+  /* Hover-lift genérico */
+  .hover-lift {
+    transition: transform 300ms ease, box-shadow 300ms ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Efeito Ken Burns para fotografias hero */
+  @keyframes ken-burns {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.12);
+    }
+  }
+  .animate-ken-burns {
+    animation: ken-burns 18s ease-in-out infinite alternate;
   }
 }
 

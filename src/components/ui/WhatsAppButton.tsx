@@ -7,7 +7,7 @@ export function WhatsAppFloatingButton() {
 
   return (
     <motion.a
-      href={whatsappLinks.default}
+      href={whatsappLinks.schedule}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Agendar consulta pelo WhatsApp"

@@ -57,7 +57,7 @@ export function Contact() {
                 const isWhatsapp = item.label === "WhatsApp";
                 const isInstagram = item.label === "Instagram";
                 const content = isWhatsapp ? (
-                  <a href={whatsappLinks.default} target="_blank" rel="noopener noreferrer" className="hover:text-sage-dark">
+                  <a href={whatsappLinks.contact} target="_blank" rel="noopener noreferrer" className="hover:text-sage-dark">
                     {item.value}
                   </a>
                 ) : isInstagram ? (
@@ -87,7 +87,7 @@ export function Contact() {
             </p>
 
             <Button
-              href={whatsappLinks.default}
+              href={whatsappLinks.contact}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-fit"

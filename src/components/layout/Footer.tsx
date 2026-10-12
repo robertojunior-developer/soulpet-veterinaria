@@ -1,6 +1,15 @@
 import { MessageCircle } from "lucide-react";
 import { InstagramGlyph } from "../ui/InstagramGlyph";
-import { navLinks, siteMeta, whatsappLinks, INSTAGRAM_URL, INSTAGRAM_HANDLE, withBase } from "../../data/siteContent";
+import {
+  navLinks,
+  siteMeta,
+  whatsappLinks,
+  INSTAGRAM_URL,
+  INSTAGRAM_HANDLE,
+  withBase,
+  services,
+  topBar,
+} from "../../data/siteContent";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -18,7 +27,7 @@ export function Footer() {
               className="h-12 w-12 rounded-xl object-cover"
             />
             <span className="flex flex-col leading-tight">
-              <span className="font-display text-lg font-semibold text-ivory">{siteMeta.name}</span>
+              <span className="font-display text-lg font-bold text-ivory">{siteMeta.name}</span>
               <span className="text-xs uppercase tracking-[0.14em] text-ivory/60">{siteMeta.tagline}</span>
             </span>
           </a>
@@ -36,16 +45,29 @@ export function Footer() {
           ))}
         </nav>
 
+        <nav aria-label="Serviços" className="flex flex-col gap-3">
+          <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-ivory">Serviços</h3>
+          {services.items.slice(0, 5).map((service) => (
+            <a
+              key={service.title}
+              href="#servicos"
+              className="text-sm text-ivory/65 transition-colors hover:text-gold"
+            >
+              {service.title}
+            </a>
+          ))}
+        </nav>
+
         <div className="flex flex-col gap-3">
           <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-ivory">Contato</h3>
           <a
-            href={whatsappLinks.default}
+            href={whatsappLinks.contact}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm text-ivory/65 transition-colors hover:text-gold"
           >
-            <MessageCircle className="h-4 w-4" aria-hidden="true" />
-            (61) 99524-0505
+            <MessageCircle className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+            {topBar.phoneDisplay}
           </a>
           <a
             href={INSTAGRAM_URL}
@@ -56,12 +78,7 @@ export function Footer() {
             <InstagramGlyph className="h-4 w-4" aria-hidden="true" />
             {INSTAGRAM_HANDLE}
           </a>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-ivory">Soul Pet</h3>
-          <p className="text-sm text-ivory/60">{siteMeta.professional}</p>
-          <p className="text-sm text-ivory/60">{siteMeta.tagline}</p>
+          <p className="pt-2 text-sm text-ivory/50">{siteMeta.professional}</p>
         </div>
       </div>
 

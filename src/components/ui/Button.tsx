@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost";
+type Variant = "primary" | "secondary" | "ghost" | "outline-light";
 
 const base =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 focus-visible:outline-offset-4 disabled:opacity-60 disabled:pointer-events-none";
@@ -13,6 +13,8 @@ const variants: Record<Variant, string> = {
   secondary:
     "bg-transparent text-deep-green border border-deep-green/30 hover:bg-deep-green/5 hover:-translate-y-0.5",
   ghost: "bg-gold text-charcoal hover:bg-gold-dark hover:-translate-y-0.5",
+  "outline-light":
+    "bg-ivory/5 text-ivory border border-ivory/40 backdrop-blur-sm hover:bg-ivory/15 hover:-translate-y-0.5",
 };
 
 type CommonProps = {

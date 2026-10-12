@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
-import { PawPrint, HeartHandshake, Leaf, ShieldCheck } from "lucide-react";
+import { PawPrint, HeartHandshake, Leaf, ShieldCheck, ChevronDown } from "lucide-react";
 import { hero, whatsappLinks } from "../../data/siteContent";
 import { Button } from "../ui/Button";
+import { RevealText } from "../animations/RevealText";
+import { AnimatedButton } from "../animations/AnimatedButton";
 
 const highlightIcons = [HeartHandshake, Leaf, ShieldCheck];
 
@@ -9,74 +11,92 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden bg-ivory pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-44"
+      className="relative flex min-h-[92vh] items-center overflow-hidden bg-deep-green"
     >
-      {/* Organic background shapes */}
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-        <div className="absolute -left-32 top-10 h-80 w-80 rounded-full bg-sage/15 blur-3xl" />
-        <div className="absolute -right-20 top-40 h-96 w-96 rounded-full bg-gold/15 blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-deep-green/10 blur-3xl" />
+      {/* Fotografia de fundo cinematográfica com Ken Burns */}
+      <div className="absolute inset-0 -z-10" aria-hidden="true">
+        <img
+          src={hero.image}
+          alt=""
+          fetchPriority="high"
+          className="h-full w-full animate-ken-burns object-cover motion-reduce:animate-none"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-deep-green/90 via-deep-green/60 to-deep-green/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-deep-green/80 via-transparent to-transparent" />
       </div>
 
-      <div className="container-pad grid items-center gap-14 lg:grid-cols-2 lg:gap-10">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
+      <div className="container-pad flex flex-col items-start gap-7 py-32 sm:py-40">
+        <motion.span
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="flex flex-col items-start gap-6"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="inline-flex items-center gap-2 rounded-full bg-ivory/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold backdrop-blur-sm"
         >
-          <span className="inline-flex items-center gap-2 rounded-full bg-sage/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-sage-dark">
-            <PawPrint className="h-4 w-4" aria-hidden="true" />
-            {hero.badge}
-          </span>
+          <PawPrint className="h-4 w-4" aria-hidden="true" />
+          {hero.badge}
+        </motion.span>
 
-          <h1 className="text-balance text-4xl font-medium leading-[1.1] text-deep-green sm:text-5xl lg:text-[3.4rem]">
-            {hero.title}
-          </h1>
+        <h1 className="max-w-3xl text-balance text-4xl font-extrabold uppercase leading-[1.08] text-ivory sm:text-5xl lg:text-6xl">
+          <RevealText text={hero.title} delay={0.15} />
+        </h1>
 
-          <p className="text-balance max-w-xl text-base leading-relaxed text-charcoal/75 sm:text-lg">
-            {hero.subtitle}
-          </p>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+          className="text-balance max-w-xl text-base leading-relaxed text-ivory/85 sm:text-lg"
+        >
+          {hero.subtitle}
+        </motion.p>
 
-          <div className="flex flex-col gap-4 sm:flex-row">
-            <Button href={whatsappLinks.default} target="_blank" rel="noopener noreferrer">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.65, ease: "easeOut" }}
+          className="flex flex-col gap-4 sm:flex-row"
+        >
+          <AnimatedButton>
+            <Button href={whatsappLinks.schedule} target="_blank" rel="noopener noreferrer" variant="ghost">
               {hero.ctaPrimary}
             </Button>
-            <Button href="#servicos" variant="secondary">
+          </AnimatedButton>
+          <AnimatedButton>
+            <Button href="#servicos" variant="outline-light">
               {hero.ctaSecondary}
             </Button>
-          </div>
-
-          <ul className="mt-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-6">
-            {hero.highlights.map((item, index) => {
-              const Icon = highlightIcons[index] ?? HeartHandshake;
-              return (
-                <li key={item} className="flex items-center gap-2 text-sm font-medium text-charcoal/75">
-                  <Icon className="h-4 w-4 text-sage-dark" aria-hidden="true" />
-                  {item}
-                </li>
-              );
-            })}
-          </ul>
+          </AnimatedButton>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-          className="relative mx-auto w-full max-w-md lg:max-w-none"
+        <motion.ul
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+          className="mt-2 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-6"
         >
-          <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-sage/25 via-gold/10 to-transparent blur-2xl" />
-          <img
-            src={hero.image}
-            alt={hero.imageAlt}
-            width={624}
-            height={777}
-            fetchPriority="high"
-            className="aspect-[4/5] w-full rounded-[2.5rem] border-4 border-white object-cover shadow-soft"
-          />
-        </motion.div>
+          {hero.highlights.map((item, index) => {
+            const Icon = highlightIcons[index] ?? HeartHandshake;
+            return (
+              <li key={item} className="flex items-center gap-2 text-sm font-medium text-ivory/80">
+                <Icon className="h-4 w-4 text-gold" aria-hidden="true" />
+                {item}
+              </li>
+            );
+          })}
+        </motion.ul>
       </div>
+
+      {/* Indicador de scroll */}
+      <motion.a
+        href="#sobre"
+        aria-label="Rolar para a próxima seção"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 8, 0] }}
+        transition={{ opacity: { delay: 1.1, duration: 0.5 }, y: { repeat: Infinity, duration: 1.8, ease: "easeInOut" } }}
+        className="absolute bottom-7 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-ivory/70 motion-reduce:animate-none"
+      >
+        <span className="text-[10px] uppercase tracking-[0.2em]">Role</span>
+        <ChevronDown className="h-5 w-5" aria-hidden="true" />
+      </motion.a>
     </section>
   );
 }

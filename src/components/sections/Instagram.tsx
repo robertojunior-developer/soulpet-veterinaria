@@ -3,6 +3,7 @@ import { InstagramGlyph as InstagramIcon } from "../ui/InstagramGlyph";
 import { instagram } from "../../data/siteContent";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
+import { AnimatedButton } from "../animations/AnimatedButton";
 
 export function InstagramSection() {
   return (
@@ -28,7 +29,7 @@ export function InstagramSection() {
                 src={post.src}
                 alt={post.alt}
                 loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <span className="absolute inset-0 flex items-center justify-center bg-charcoal/0 transition-colors duration-300 group-hover:bg-deep-green/40">
                 <InstagramIcon
@@ -40,10 +41,12 @@ export function InstagramSection() {
           ))}
         </div>
 
-        <Button href={instagram.url} target="_blank" rel="noopener noreferrer" variant="secondary">
-          <InstagramIcon className="h-4 w-4" aria-hidden="true" />
-          {instagram.cta}
-        </Button>
+        <AnimatedButton>
+          <Button href={instagram.url} target="_blank" rel="noopener noreferrer" variant="secondary">
+            <InstagramIcon className="h-4 w-4" aria-hidden="true" />
+            {instagram.cta}
+          </Button>
+        </AnimatedButton>
       </div>
     </section>
   );

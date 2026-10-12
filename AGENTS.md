@@ -1,6 +1,6 @@
 # Soul Pet — Landing Page
 
-Stack: React 19 + TypeScript + Vite + Tailwind CSS 4 + Motion (Framer Motion) + lucide-react.
+Stack: React 19 + TypeScript + Vite + Tailwind CSS 4 + Motion (Framer Motion) + GSAP (ScrollTrigger) + lucide-react.
 
 ## Comandos
 
@@ -12,12 +12,26 @@ Stack: React 19 + TypeScript + Vite + Tailwind CSS 4 + Motion (Framer Motion) + 
 
 ## Estrutura
 
-- `src/data/siteContent.ts` — **todo o texto, links e dados editáveis do site** (WhatsApp, Instagram, endereço, serviços, depoimentos, FAQ etc.)
-- `src/components/layout` — Header e Footer
-- `src/components/ui` — componentes reutilizáveis (Button, ServiceCard, Accordion, Lightbox, WhatsAppButton, SectionHeading)
-- `src/components/sections` — seções da landing page, montadas em `src/App.tsx`
+- `src/data/siteContent.ts` — **todo o texto, links e dados editáveis do site** (WhatsApp, Instagram, endereço, serviços, depoimentos, FAQ, banner, medicina integrativa, categorias da galeria etc.)
+- `src/components/layout` — Header (duas barras + sticky) e Footer
+- `src/components/ui` — componentes reutilizáveis (Button, ServiceCard, Accordion, Lightbox, WhatsAppButton, SectionHeading, InstagramGlyph)
+- `src/components/animations` — sistema global de animação (AnimatedSection, FadeIn, RevealText, StaggerContainer, HoverCard, ParallaxImage, ImageReveal, AnimatedButton, ScrollProgress, BackToTop)
+- `src/components/sections` — seções da landing page, montadas em `src/App.tsx` (Hero, Introduction = "Sobre a Soul Pet", Banner, Services, IntegrativeCare = "Especialidades", Differentials, Gallery, About = "Conheça a Profissional", Testimonials, Instagram, CTA, FAQ, Contact)
 - `public/images` — imagens otimizadas (webp) usadas no site, geradas a partir da pasta `imagens/` na raiz do repositório
 - `public/favicon.png`, `apple-touch-icon.png` — gerados a partir da logomarca original
+
+## Design tokens
+
+Cores centralizadas em `src/styles/globals.css` (`:root`, variáveis `--color-primary`, `--color-secondary`, `--color-accent`, `--color-background`, `--color-surface`, `--color-text`, `--color-text-muted`), além das classes utilitárias Tailwind já existentes (`bg-sage`, `bg-deep-green`, `bg-ivory`, `bg-gold` etc.), todas extraídas da identidade visual original da Soul Pet (logomarca). Tipografia: Manrope (títulos), Inter (texto), Playfair Display (destaques editoriais pontuais via `.font-accent`).
+
+## WhatsApp
+
+Mensagens contextuais centralizadas em `whatsappLinks` (`src/data/siteContent.ts`):
+- `schedule` — agendamento (CTAs principais)
+- `service(nome)` — interesse em um serviço específico
+- `contact` — contato geral
+
+Número oficial: `WHATSAPP_NUMBER` (mesmo arquivo). Não há números fictícios.
 
 ## Informações pendentes de confirmação
 
